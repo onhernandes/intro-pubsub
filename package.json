@@ -12,6 +12,7 @@
     "serverless-google-cloudfunctions": "*"
   },
   "dependencies": {
+    "@google-cloud/pubsub": "^0.31.1",
     "sparkpost": "^2.1.3"
   }
 }
