@@ -3,7 +3,7 @@ const pubsub = new PubSub();
 
 const users = [
   {
-    name: 'Seu Nome',
+    nome: 'Seu Nome',
     email: 'seu@email.com',
     quantidadeVendas: 150
   }
