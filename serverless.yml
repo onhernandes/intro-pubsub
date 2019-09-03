@@ -24,7 +24,7 @@ functions:
     events:
       - event:
           eventType: providers/cloud.pubsub/eventTypes/topic.publish
-          resource: projects/*/topics/sendEmailToUser
+          resource: projects/*/topics/sendEmailToUserTopic
 
   # NOTE: the following uses an "event" event (pubSub event in this case).
   # Please create the corresponding resources in the Google Cloud
