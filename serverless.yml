@@ -1,8 +1,8 @@
-service: intro-github # NOTE: Don't put the word "google" in here
+service: intro-pubsub # NOTE: Don't put the word "google" in here
 
 provider:
   name: google
-  runtime: nodejs
+  runtime: nodejs8
   project: my-project
   # the path to the credentials file needs to be absolute
   credentials: ~/.gcloud/keyfile.json

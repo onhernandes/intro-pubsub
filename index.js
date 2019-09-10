@@ -1,11 +1,11 @@
-const SparkPost = require('sparkpost');
-const spark = new SparkPost('key');
 
-exports.sendEmailToUser = async (event) => {
-  let data = event.data ? Buffer.from(event.data, 'base64').toString() : '{}';
-  data = JSON.parse(data);
+exports.sendEmailToUser = async (pubSubEvent, context) => {
+  const stringifiedJson = Buffer.from(pubSubEvent.data, 'base64').toString();
+  const message = JSON.parse(stringifiedJson);
+  const SparkPost = require('sparkpost');
+  const spark = new SparkPost('key');
 
-  let payload = {
+  const payload = {
     content: {
       subject: 'Relatório de vendas',
       from: 'sua@empresa.com.br'

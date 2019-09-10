@@ -1,18 +1,11 @@
-const { PubSub } = require('@google-cloud/pubsub');
-const pubsub = new PubSub();
+const app = require('./app');
 
-const users = [
-  {
-    nome: 'Seu Nome',
-    email: 'seu@email.com',
-    quantidadeVendas: 150
-  }
-];
-
-(async () => {
+app.use('/enviar-emails', context => {
+  const { PubSub } = require('@google-cloud/pubsub');
+  const pubsub = new PubSub();
   const topic = 'sendEmailToUserTopic';
   const publisher = pubsub.topic(topic).publisher();
-  const promises = users
+  const promises = context.body.users
     .map(user => {
       const jsonUser = JSON.stringify(user);
       const bufferedData = Buffer.from(jsonUser);
@@ -20,5 +13,5 @@ const users = [
     });
 
   await Promise.all(promises);
-  console.log(`Dados enviados para o tópico: ${topic}!`);
-})();
+  return `Dados enviados para o tópico: ${topic}!`;
+});
